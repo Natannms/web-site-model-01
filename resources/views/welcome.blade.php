@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="{{ url('storage/css') }}/app.css">
+    <script src="https://kit.fontawesome.com/6ed674a615.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-gray-1000">
@@ -148,11 +149,16 @@
     {{-- if success in session exists --}}
     @if (session('success'))
     <div class="alert alert-success shadow-lg mb-10">
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span>{{ session('success') }}. Confirme em seu email seu cadastro!</span>
+        <div class="flex flex-row justify-between w-full">
+            <div class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('success') }}. Confirme em seu email seu cadastro!</span>
+            </div>
+            <button onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
         </div>
     </div>
@@ -166,6 +172,11 @@
         </div>
     </div>
     @endif
+    <script>
+        function closeModal() {
+            document.querySelector('.alert').remove();
+        }
+    </script>
     <div class="relative pt-40">
         <img src="{{ url('storage/backgrounds') }}/bg2.jpg" class="absolute inset-0 object-cover w-full h-full" alt="" />
         <div class="relative bg-opacity-75 bg-deep-purple-accent-700">
@@ -593,9 +604,10 @@
             </div>
         </div>
     </div>
-    <script src="./js/gallery.js"></script>
-    <script>
-        var modal = false;
+    <script src="./js/gallery.js">
+        < /> <
+        script >
+            var modal = false;
 
         function closeModal() {
             window.location.href = "/#gallery";
@@ -633,8 +645,9 @@
 
                 linkReaMore.style.display = 'block';
             }
-        }
-    </script>
-</body>
+        } <
+        /> < /
+        body >
 
-</html>
+            <
+            /html>
