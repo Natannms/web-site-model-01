@@ -23,11 +23,11 @@ class AdminController extends Controller
                     'user' => Auth::user(),
                     'orders' => Order::all(),
                     'posts' => Post::all(),
-                    'services'=> Service::all(),
+                    'services' => Service::all(),
                     'social' => Social::all(),
                     'wiki' => Wiki::all(),
                 ]);
-            }else{
+            } else {
                 return redirect()->back()->with('error', 'Acesso Negado!');
             }
         }
