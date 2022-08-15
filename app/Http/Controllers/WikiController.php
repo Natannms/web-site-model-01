@@ -37,7 +37,8 @@ class WikiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         $wikiList = Wiki::all();
         return view('wiki', compact('wikiList'));
     }
@@ -58,7 +59,8 @@ class WikiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $Wiki = new Wiki();
         $Wiki->title = $request->title;
         $Wiki->content = $request->content;
@@ -79,8 +81,9 @@ class WikiController extends Controller
         return view('wiki', compact('wikiList'));
     }
 
-    public function searchByKey($key){
-        $wikiList = Wiki::where('title', 'like', $key.'%')->get();
+    public function searchByKey($key)
+    {
+        $wikiList = Wiki::where('title', 'like', $key . '%')->get();
         return view('wiki', compact('wikiList'));
     }
     /**
@@ -91,7 +94,6 @@ class WikiController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -104,7 +106,6 @@ class WikiController extends Controller
 
     public function update(Request $request, $id)
     {
-
     }
 
     /**
@@ -113,11 +114,10 @@ class WikiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($name)
+    public function destroy(Request $request)
     {
-        $wiki = Wiki::find($name);
+        $wiki = Wiki::find($request->id);
         $wiki->delete();
-        return back()->with('success', 'Wiki deletado com sucesso!');
+        return redirect()->route('response')->with('success', 'Wiki deletado com sucesso!');
     }
-
 }

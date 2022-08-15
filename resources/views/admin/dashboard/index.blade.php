@@ -76,7 +76,7 @@
                     <h2
                         class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
                         <span class="relative inline-block">
-                            <span class="relative text-white">Scocial</span>
+                            <span class="relative text-white">Social</span>
                         </span>
                     </h2>
                     <a href="/social/create" class="btn btn-primary">Nova Rede Social</a>
@@ -165,8 +165,8 @@
                     <div
                         class="absolute inset-x-0 top-0 items-center justify-center hidden overflow-hidden md:flex md:inset-y-0">
                         <svg viewBox="0 0 88 88" class="w-full max-w-screen-xl text-gray-800">
-                            <circle fill="currentColor" fill-opacity="0.4" cx="44" cy="44"
-                                r="15.5"></circle>
+                            <circle fill="currentColor" fill-opacity="0.4" cx="44" cy="44" r="15.5">
+                            </circle>
                             <circle fill-opacity="0.1" fill="currentColor" cx="44" cy="44"
                                 r="44"></circle>
                             <circle fill-opacity="0.1" fill="currentColor" cx="44" cy="44"
@@ -193,8 +193,8 @@
                     </div>
                 </div>
             </div>
-             {{-- serviços --}}
-             <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            {{-- serviços --}}
+            <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                 <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                     <h2
                         class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
@@ -237,7 +237,7 @@
                     @endforeach
                 </div>
             </div>
-             {{-- wiki --}}
+            {{-- wiki --}}
             <div class="">
                 <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                     <h2
@@ -253,7 +253,8 @@
                         <div class="badge badge-info gap-2">
 
                             <form action="/wiki/delete" method="post">
-                                <input type="hidden" name="name" value="{{ $item->name }}">
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                @csrf
                                 <button type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         class="inline-block w-4 h-4 stroke-current">
@@ -261,7 +262,7 @@
                                             d="M6 18L18 6M6 6l12 12"></path>
                                     </svg>
 
-                                    </button>
+                                </button>
                             </form>
                             {{ $item->title }}
                         </div>

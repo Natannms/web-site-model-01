@@ -27,19 +27,27 @@
 
     {{-- if exists session sucsses --}}
     @if (session('success'))
-    <div class="alert alert-success shadow-lg">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>{{ session('success') }}</span>
+        <div class="alert alert-success shadow-lg">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('success') }}</span>
+            </div>
         </div>
-      </div>
     @elseif (session('error'))
-    <div class="alert alert-error shadow-lg">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>{{ session('error') }}</span>
+        <div class="alert alert-error shadow-lg">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('error') }}</span>
+            </div>
         </div>
-      </div>
     @endif
     <div class="create">
         <form enctype="multipart/form-data" action="/posts" method="post" class="py-10 px-10 w-4/12">
@@ -47,10 +55,12 @@
             <h1 class="text-2xl font-black">Cadastre um novo post</h1>
             <hr>
             <div class="label mt-10">Titulo:</div>
-            <input type="text" name="title" placeholder="Titulo" class="input input-bordered input-primary w-full max-w-xs" />
+            <input type="text" name="title" placeholder="Titulo"
+                class="input input-bordered input-primary w-full max-w-xs" />
             <div class="label">Imagem:</div>
-            <input type="file" name="image" placeholder="image" class="input input-bordered input-primary w-full max-w-xs" />
-            <div class="label">Conteúdo</div>
+            <input type="file" name="image" placeholder="image"
+                class="input input-bordered input-primary w-full max-w-xs" />
+            <div class="label">Conteúdo:</div>
             <textarea name="body" class="textarea textarea-primary" cols="72" placeholder="digite seu texto"></textarea>
 
             <div class="flex ">

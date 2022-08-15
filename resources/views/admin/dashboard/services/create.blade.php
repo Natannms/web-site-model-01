@@ -27,39 +27,51 @@
 
     {{-- if exists session sucsses --}}
     @if (session('success'))
-    <div class="alert alert-success shadow-lg">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>{{ session('success') }}</span>
+        <div class="alert alert-success shadow-lg">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('success') }}</span>
+            </div>
         </div>
-      </div>
     @elseif (session('error'))
-    <div class="alert alert-error shadow-lg">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>{{ session('error') }}</span>
+        <div class="alert alert-error shadow-lg">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ session('error') }}</span>
+            </div>
         </div>
-      </div>
     @endif
     <div class="create">
         <form enctype="multipart/form-data" action="/services" method="post" class="py-10 px-10 w-4/12">
             @csrf
-            <h1 class="text-2xl font-black">Cadastre um novo Serviço</h1>
+            <h1 class="text-2xl font-black">Cadastre um novo serviço</h1>
             <hr>
             <div class="label mt-10">Nome:</div>
-            <input type="text" name="name" placeholder="Nome" class="input input-bordered input-primary w-full max-w-xs" />
+            <input type="text" name="name" placeholder="Nome"
+                class="input input-bordered input-primary w-full max-w-xs" />
 
             <div class="label mt-10">Preço:</div>
-            <input type="text" name="price" placeholder="ex: 1.000,00" class="input input-bordered input-primary w-full max-w-xs" />
+            <input type="text" name="price" placeholder="Ex: R$1.000,00"
+                class="input input-bordered input-primary w-full max-w-xs" />
 
             <div class="label mt-10">Breve descrição:</div>
-            <input type="text" name="short_description" placeholder=". . ." class="input input-bordered input-primary w-full max-w-xs" />
+            <input type="text" name="short_description" placeholder=". . ."
+                class="input input-bordered input-primary w-full max-w-xs" />
 
             <div class="label">Imagem:</div>
-            <input type="file" name="image" placeholder="image" class="input input-bordered input-primary w-full max-w-xs" />
+            <input type="file" name="image" placeholder="image"
+                class="input input-bordered input-primary w-full max-w-xs" />
 
-            <div class="label">Conteúdo</div>
-            <textarea name="long_description" class="textarea textarea-primary" cols="72" placeholder="digite seu texto"></textarea>
+            <div class="label">Conteúdo:</div>
+            <textarea name="long_description" class="textarea textarea-primary" cols="72" placeholder="Digite seu texto"></textarea>
 
             <div class="flex ">
                 <button type="submit" class="btn btn-success text-white">Criar</button>

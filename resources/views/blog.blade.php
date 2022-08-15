@@ -239,20 +239,20 @@
                             </h3>
                             <form>
                                 <div class="mb-1 sm:mb-2">
-                                    <label for="name" class="inline-block mb-1 font-medium">Name</label>
+                                    <label for="name" class="inline-block mb-1 font-medium">Nome:</label>
                                     <input placeholder="John Doe" required="" type="text"
                                         class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                                         id="name" name="name" />
                                 </div>
                                 <div class="mb-1 sm:mb-2">
-                                    <label for="email" class="inline-block mb-1 font-medium">E-mail</label>
+                                    <label for="email" class="inline-block mb-1 font-medium">E-mail:</label>
                                     <input placeholder="john.doe@example.org" required="" type="text"
                                         class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                                         id="email" name="email" />
                                 </div>
                                 <div class="mb-1 sm:mb-2">
-                                    <label for="email" class="inline-block mb-1 font-medium">Comment</label>
-                                    <textarea placeholder="seu comentário..." required=""
+                                    <label for="email" class="inline-block mb-1 font-medium">Comentário:</label>
+                                    <textarea placeholder="Seu comentário..." required=""
                                         class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                                         id="comment" name="comment"></textarea>
                                 </div>

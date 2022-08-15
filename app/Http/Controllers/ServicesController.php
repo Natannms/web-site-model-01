@@ -58,24 +58,24 @@ class ServicesController extends Controller
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
 
             // Verifica se NÃO deu certo o upload (Redireciona de volta)
-            if ( !$upload )
+            if (!$upload)
                 return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao fazer upload')
-                            ->withInput();
-            }
+                    ->back()
+                    ->with('error', 'Falha ao fazer upload')
+                    ->withInput();
+        }
 
-            $service = new Service();
-            $service->name = $request->name;
-            $service->short_description = $request->short_description;
-            $service->long_description = $request->long_description;
-            $service->price = (float)$request->price;
-            $service->image = $nameFile;
-            $service->save();
+        $service = new Service();
+        $service->name = $request->name;
+        $service->short_description = $request->short_description;
+        $service->long_description = $request->long_description;
+        $service->price = (float)$request->price;
+        $service->image = $nameFile;
+        $service->save();
 
-            if ($service) {
-                return back()->with('success', 'Serviço criado com sucesso!');
-            }
+        if ($service) {
+            return back()->with('success', 'Serviço criado com sucesso!');
+        }
     }
 
     /**
@@ -124,6 +124,6 @@ class ServicesController extends Controller
         //delete service
         $service = Service::find($request->id);
         $service->delete();
-        return back()->with('success', 'Serviço excluído com sucesso!');
+        return redirect()->route('response')->with('success', 'Serviço deletado com sucesso!');
     }
 }

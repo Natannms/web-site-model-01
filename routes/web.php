@@ -33,6 +33,11 @@ Route::get('/admin/login', function () {
 });
 Route::post('/admin/auth', [AdminController::class, 'login']);
 
+//responses routes
+Route::get('/response', function () {
+    return view('responses.response');
+})->name('response');
+
 //client routes
 Route::get('/myaccount/home', [UserController::class, 'myaccountHome']);
 
@@ -62,7 +67,7 @@ Route::get('/blog', [PostController::class, 'index']);
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::get('/blog/{id}', [PostController::class, 'show']);
 Route::put('/blog/{id}', [PostController::class, 'update']);
-Route::post('/posts', [PostController::class, 'store' ]);
+Route::post('/posts', [PostController::class, 'store']);
 Route::get('/posts/delete/{id}', [PostController::class, 'destroy']);
 
 
@@ -70,7 +75,7 @@ Route::get('/posts/delete/{id}', [PostController::class, 'destroy']);
 Route::get('/comment', [CommentController::class, 'index']);
 Route::get('/comment/{id}', [CommentController::class, 'show']);
 Route::put('/comment/{id}', [CommentController::class, 'update']);
-Route::post('/comment', [CommentController::class, 'store' ]);
+Route::post('/comment', [CommentController::class, 'store']);
 Route::delete('/comment/{id}', [CommentController::class, 'destroy']);
 
 //wiki routes

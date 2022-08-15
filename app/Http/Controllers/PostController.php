@@ -144,6 +144,6 @@ class PostController extends Controller
         //delete post
         $post = Post::find($id);
         $post->delete();
-        return back()->with('success', 'Postagem deletada com sucesso!');
+        return redirect()->route('response')->with('success', 'Post deletado com sucesso!');
     }
 }

@@ -135,27 +135,35 @@
     <div class=" px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         {{-- if success in session exists --}}
         @if (session('success'))
+            <div class="alert alert-success shadow-lg mb-10">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ session('success') }}. Por favor aguarde, e faremos contato com você em breve !</span>
 
-        <div class="alert alert-success shadow-lg mb-10">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              <span>{{ session('success') }}. Por favor aguarde, e faremos contato com você em breve !</span>
-
+                </div>
             </div>
-          </div>
-          @elseif (session('error'))
-          <div class="alert alert-error shadow-lg">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              <span>{{ session('error') }}</span>
+        @elseif (session('error'))
+            <div class="alert alert-error shadow-lg">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ session('error') }}</span>
+                </div>
             </div>
-          </div>
         @endif
 
         <div class=" grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
             @foreach ($services as $item)
                 <div class="overflow-hidden transition-shadow duration-300 bg-white rounded">
-                    <a href="/" aria-label="Article"><img src="{{ $item->image }}"
+                    <a href="/" aria-label="Article"><img
+                            src="{{ url('storage/Services') }}/{{ $item->image }}"
                             class="object-cover w-full h-64 rounded" alt="" /></a>
                     <div class="py-5 px-5">
                         <a href="/" aria-label="Article"
@@ -166,7 +174,7 @@
                             {{ $item->short_description }}
                         </p>
                         <p class="mb-4 text-gray-700">
-                            <span class="font-bold">Description</span>: <br>
+                            <span class="font-bold">Descrição:</span><br>
                             {{ $item->long_description }}
                         </p>
                         <div class="flex space-x-4">
@@ -175,12 +183,13 @@
 
                                 <div class="flex flex-row justify-around w-80 items-center">
                                     {{-- price formated in monetary BRL --}}
-                                  <div class="font-semibold price text-2xl text-green-900">
-                                    R$ {{ $item->price }}
-                                 </div>
-                                     <form action="/order/selected_service" method="post">
+                                    <div class="font-semibold price text-2xl text-green-900">
+                                        R$ {{ $item->price }}
+                                    </div>
+                                    <form action="/order/selected_service" method="post">
                                         @csrf
-                                        <input type="hidden" name="serivce_id" id="service_id" value="{{ $item->id }}">
+                                        <input type="hidden" name="serivce_id" id="service_id"
+                                            value="{{ $item->id }}">
                                         <button type="submit" class="btn btn-outline btn-primary">Selecionar</button>
                                     </form>
                                 </div>
