@@ -49,7 +49,7 @@ class WikiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.wiki.create');
     }
 
     /**
@@ -59,7 +59,12 @@ class WikiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-
+        $Wiki = new Wiki();
+        $Wiki->title = $request->title;
+        $Wiki->content = $request->content;
+        $Wiki->user_id = auth()->user()->id;
+        $Wiki->save();
+        return back()->with('success', 'Wiki criado com sucesso!');
     }
 
     /**
@@ -108,9 +113,11 @@ class WikiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($name)
     {
-
+        $wiki = Wiki::find($name);
+        $wiki->delete();
+        return back()->with('success', 'Wiki deletado com sucesso!');
     }
 
 }

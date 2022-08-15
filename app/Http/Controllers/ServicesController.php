@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
-use App\Models\Post;
-use App\Models\Social;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'DESC')->get();
-        $comments = Comment::where('post_id', $posts[0]->id)->orderBy('id', 'DESC')->paginate(4);
-        $socials = Social::limit(4)->get();
-        $data = [
-            'posts' => $posts,
-            'comments' => $comments,
-            'socials' => $socials,
-        ];
-        return view('blog', compact('data'));
+        //get all servies
+        $services = Service::all();
+        return view('agendamento.select_service', compact('services'));
     }
 
     /**
@@ -34,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.posts.create');
+        return view('admin.dashboard.services.create');
     }
 
     /**
@@ -62,7 +54,7 @@ class PostController extends Controller
             $nameFile = "{$name}.{$extension}";
 
             // Faz o upload:
-            $upload = $request->image->storeAs('public/Posts', $nameFile);
+            $upload = $request->image->storeAs('public/Services', $nameFile);
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
 
             // Verifica se NÃO deu certo o upload (Redireciona de volta)
@@ -73,15 +65,16 @@ class PostController extends Controller
                             ->withInput();
             }
 
-            $posts = new Post();
-            $posts->title = $request->title;
-            $posts->body = $request->body;
-            $posts->image = $nameFile;
-            $posts->user_id = auth()->user()->id;
-            $posts->save();
+            $service = new Service();
+            $service->name = $request->name;
+            $service->short_description = $request->short_description;
+            $service->long_description = $request->long_description;
+            $service->price = (float)$request->price;
+            $service->image = $nameFile;
+            $service->save();
 
-            if ($posts) {
-                return back()->with('success', 'Postagem criada com sucesso!');
+            if ($service) {
+                return back()->with('success', 'Serviço criado com sucesso!');
             }
     }
 
@@ -93,15 +86,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $posts = Post::where('id', $id)->orderBy('id', 'DESC')->get();
-        $comments = Comment::where('post_id', $posts[0]->id)->orderBy('id', 'DESC')->paginate(4);
-        $socials = Social::limit(4)->get();
-        $data = [
-            'posts' => $posts,
-            'comments' => $comments,
-            'socials' => $socials,
-        ];
-        return view('blog', compact('data'));
+        //
     }
 
     /**
@@ -133,11 +118,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //delete post
-        $post = Post::find($id);
-        $post->delete();
-        return back()->with('success', 'Postagem deletada com sucesso!');
+        // return $request->all();
+        //delete service
+        $service = Service::find($request->id);
+        $service->delete();
+        return back()->with('success', 'Serviço excluído com sucesso!');
     }
 }

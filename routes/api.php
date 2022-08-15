@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/wiki/WebScrap', [WikiController::class, 'store']);
+Route::post('/wiki/WebScrap', [WikiController::class, 'WebScrap']);
