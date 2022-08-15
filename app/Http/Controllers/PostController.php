@@ -66,23 +66,23 @@ class PostController extends Controller
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
 
             // Verifica se NÃO deu certo o upload (Redireciona de volta)
-            if ( !$upload )
+            if (!$upload)
                 return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao fazer upload')
-                            ->withInput();
-            }
+                    ->back()
+                    ->with('error', 'Falha ao fazer upload')
+                    ->withInput();
+        }
 
-            $posts = new Post();
-            $posts->title = $request->title;
-            $posts->body = $request->body;
-            $posts->image = $nameFile;
-            $posts->user_id = auth()->user()->id;
-            $posts->save();
+        $posts = new Post();
+        $posts->title = $request->title;
+        $posts->body = $request->body;
+        $posts->image = $nameFile;
+        $posts->user_id = auth()->user()->id;
+        $posts->save();
 
-            if ($posts) {
-                return back()->with('success', 'Postagem criada com sucesso!');
-            }
+        if ($posts) {
+            return back()->with('success', 'Postagem criada com sucesso!');
+        }
     }
 
     /**
@@ -93,7 +93,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $posts = Post::where('id', $id)->orderBy('id', 'DESC')->get();
+
+        $posts = Post::where('id', $id)->orderBy('id', 'DESC')->first();
+
+        if (!$posts) {
+            return back();
+        }
         $comments = Comment::where('post_id', $posts[0]->id)->orderBy('id', 'DESC')->paginate(4);
         $socials = Social::limit(4)->get();
         $data = [
@@ -101,6 +106,7 @@ class PostController extends Controller
             'comments' => $comments,
             'socials' => $socials,
         ];
+
         return view('blog', compact('data'));
     }
 
